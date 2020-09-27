@@ -36,7 +36,7 @@ app.all('/', (req, res, next) => {
   res.header(headers);
   requestCount++;
   console.log('Request Number: ', requestCount);
-  if ( req.method === 'GET' || req.method === 'POST' || req.method === 'OPTIONS') {
+  if ( req.method === 'GET' || req.method === 'POST' || req.method === 'OPTIONS' ) {
     next();
   } else {
     res.statusCode = 405;
@@ -97,6 +97,10 @@ app.all('/', (req, res, next) => {
         }
       })
     });
+  }))
+  .get('/loadtest', ((req, res) => {
+    res.statusCode = 200;
+    res.end();
   }))
 
 const server = http.createServer(app);
